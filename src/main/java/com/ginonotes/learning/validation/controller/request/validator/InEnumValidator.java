@@ -21,13 +21,13 @@ public class InEnumValidator implements ConstraintValidator<InEnum, String> {
     }
 
     @Override
-    public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(String value, ConstraintValidatorContext constraintValidatorContext) {
         if (enumClass == null) {
             return false;
         }
 
         for (BaseEnum baseEnum : enumClass.getEnumConstants()) {
-            if (baseEnum.getCode().equals(s)) {
+            if (baseEnum.getCode().equals(value)) {
                 return true;
             }
         }

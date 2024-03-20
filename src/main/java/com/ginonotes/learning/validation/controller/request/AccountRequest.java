@@ -70,6 +70,7 @@ public class AccountRequest implements Serializable {
      * Address list, should not be empty
      */
     @Valid
+    @NotNull(message = "Address List should not be empty")
     @Size(min = 1, message = "Address List should not be empty")
     private List<@NotNull AddressInfo> addressList;
 }

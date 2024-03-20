@@ -16,7 +16,7 @@ public enum AccountTypeEnum implements BaseEnum {
     /**
      * Savings Account
      */
-    SAVINGS("SAVINGS", "Savings Account"),
+    SAVING("SAVING", "Savings Account"),
 
     /**
      * Current Account

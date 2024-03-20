@@ -1,5 +1,6 @@
 package com.ginonotes.learning.validation.controller.request.constraints;
 
+import com.ginonotes.learning.validation.controller.request.validator.InEnumValidator;
 import com.ginonotes.learning.validation.enums.BaseEnum;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
@@ -20,7 +21,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target({FIELD, CONSTRUCTOR, PARAMETER})
 @Retention(RUNTIME)
 @Documented
-@Constraint(validatedBy = {})
+@Constraint(validatedBy = InEnumValidator.class)
 public @interface InEnum {
 
     /**

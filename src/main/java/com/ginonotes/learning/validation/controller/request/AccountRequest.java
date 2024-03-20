@@ -6,8 +6,8 @@ import com.ginonotes.learning.validation.enums.AccountTypeEnum;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 
 import java.io.Serializable;
@@ -34,35 +34,35 @@ public class AccountRequest implements Serializable {
      * Account number, should be unique, length should be less than 32
      */
     @NotNull(message = "Account No is required")
-    @Length(max = 32, message = "Account No length should be less than 32")
+    @Size(max = 32, message = "Account No length should be less than 32")
     @UniqueAccountNo(groups = {Create.class})
     private String accountNo;
 
     /**
      * Account name, should not be empty, length should be less than 100
      */
-    @NotNull
-    @Length(max = 100, message = "Account Name length should be less than 100")
+    @NotNull(message = "Account Name is required")
+    @Size(max = 100, message = "Account Name length should be less than 100")
     private String accountName;
 
     /**
      * Account type, should be one of [SAVING, CURRENT, FIXED]
      */
-    @NotNull
+    @NotNull(message = "Account Type is required")
     @InEnum(value = AccountTypeEnum.class, message = "Account Type should be one of [SAVING, CURRENT, FIXED]")
     private String accountType;
 
     /**
      * Account balance, should not be null, should be greater than 0
      */
-    @NotNull
+    @NotNull(message = "Account Balance is required")
     @Range(min = 0, message = "Account Balance should be greater than 0")
     private BigDecimal balance;
 
     /**
      * Account expiration date, should be in the future
      */
-    @NotNull
+    @NotNull(message = "Account Expiration Date is required")
     @Future(message = "Account Expiration Date should be in the future")
     private Date expireDate;
 
@@ -70,7 +70,6 @@ public class AccountRequest implements Serializable {
      * Address list, should not be empty
      */
     @Valid
-    @NotNull
-    @Length(min = 1, message = "Address List should not be empty")
+    @Size(min = 1, message = "Address List should not be empty")
     private List<@NotNull AddressInfo> addressList;
 }

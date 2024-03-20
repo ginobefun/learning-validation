@@ -2,6 +2,7 @@ package com.ginonotes.learning.validation.controller;
 
 import com.ginonotes.learning.validation.controller.request.AccountRequest;
 import com.ginonotes.learning.validation.controller.request.Create;
+import com.ginonotes.learning.validation.controller.request.Update;
 import com.ginonotes.learning.validation.controller.response.Response;
 import jakarta.validation.groups.Default;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +34,7 @@ public class AccountController {
     }
 
     @PostMapping("/api/updateAccount")
-    public Response<String> updateAccount(@Validated(value = {Default.class, Create.class}) AccountRequest accountRequest) {
+    public Response<String> updateAccount(@Validated(value = {Default.class, Update.class}) AccountRequest accountRequest) {
         log.info("Update account: {}", accountRequest);
         // TODO: Update account
         return Response.success(accountRequest.getAccountId());
